@@ -3,15 +3,19 @@ import datetime
 
 
 class Account:
-    def __init__(self, name, balance, transactions: list(Transactions)):
+    transactions = list([Transactions])
+
+    def __init__(self, name, balance, transactions: list[Transactions]):
         self.name = name
         self.balance = balance
-        assert isinstance(list(Transactions))
+        assert isinstance(list([Transactions]))
         self.transactions = transactions
 
 
 class CreditCardAccount(Account):
-    def __init__(self, name, interest, statement_period, statement_end_date: datetime, balance, minimum_payment_amount, transactions):
+    def __init__(self, name, interest, statement_period, statement_end_date: datetime, balance, minimum_payment_amount,
+                 transactions:
+                 list[Transactions]):
         super().__init__(name, balance, transactions)
         self.interest = interest
         self.statement_period = statement_period
@@ -27,3 +31,6 @@ class SavingsAccount(Account):
         super().__init__(name, balance, transactions)
         self.interest = interest
         self.statement_period = statement_period
+
+    def add_transaction(self, transaction):
+        self.transactions.append(transaction)
